@@ -157,8 +157,8 @@ window.render=function(t){
   $('s3').style.filter=`brightness(${1-.55*p(t,9.4,10.45)})`;}
  // S4
  if(t>=10.4&&t<15.3){const x=p(t,10.5,15.2);$('s4bg').style.transform=`scale(${1.28-.2*eo(x)})`;
-  pop('s4k',t,10.75,.4,'up');pop('s4a',t,11.85,.5);pop('s4p',t,13.4,.45,'up');
-  $('cnt').textContent=String(Math.round(24*eo(p(t,13.45,14.5)))).padStart(2,'0');}
+  pop('s4k',t,10.75,.4,'up');pop('s4a',t,11.62,.45);pop('s4p',t,12.75,.45,'up');
+  $('cnt').textContent=String(Math.round(24*eo(p(t,12.8,13.9)))).padStart(2,'0');}
  // S5
  if(t>=15.1&&t<20.7){pop('s5k',t,15.35,.45);const ph=$('phone'),x=p(t,15.2,15.9);
   ph.style.transform=`translateY(${(1-eo(x))*700}px) rotate(${(1-eo(x))*-6}deg)`;
