@@ -1,0 +1,181 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Aref+Ruqaa:wght@700&family=Orbitron:wght@700;900&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#07080a;font-family:Cairo,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden}
+.scene{position:absolute;inset:0;opacity:0}
+.bg{position:absolute;inset:-4%;background-size:cover;background-position:center;will-change:transform}
+.shade{position:absolute;inset:0}
+.txt{position:absolute;left:60px;right:60px;text-align:center;will-change:transform,opacity,filter}
+.k{font-weight:700;font-size:58px;opacity:.92}
+.b{font-weight:900;font-size:136px;line-height:1.1;text-shadow:0 10px 40px rgba(0,0,0,.7)}
+.r{color:#ff2a2f;text-shadow:0 0 34px rgba(255,30,40,.55),0 10px 40px rgba(0,0,0,.6)}
+.pill{display:inline-block;background:#e31e24;font-weight:800;font-size:52px;padding:8px 40px 14px;border-radius:20px;box-shadow:0 10px 40px rgba(227,30,36,.45)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 45%,rgba(0,0,0,.65) 100%);pointer-events:none}
+#grain{position:absolute;inset:0;opacity:.06;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* clock */
+#clock{font-family:Orbitron,monospace;font-weight:900;font-size:230px;letter-spacing:6px;direction:ltr}
+#clock .c{display:inline-block}
+/* bars */
+.bar{position:absolute;left:0;right:0;height:640px;background:linear-gradient(#1b1d21,#0c0d0f);border-bottom:6px solid #2a2d33;
+ background-image:repeating-linear-gradient(0deg,#16181b 0 34px,#202328 34px 40px)}
+/* phone */
+#phone{position:absolute;left:50%;top:330px;width:640px;height:1240px;margin-left:-320px;border-radius:70px;background:#000;border:14px solid #1c1e22;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 0 2px #33363c;overflow:hidden}
+#phone .hd{height:170px;background:#1f2c33;display:flex;align-items:flex-end;gap:20px;padding:0 30px 24px}
+#phone .av{width:84px;height:84px;border-radius:50%;background:#fff url(logo.jpg) center/88% no-repeat;flex:none}
+#phone .nm{font-weight:800;font-size:34px;line-height:1.2}
+#phone .st{font-size:24px;color:#8fd9a8;font-weight:600}
+#chat{position:absolute;top:170px;bottom:110px;left:0;right:0;background:#0b141a;padding:40px 26px;display:flex;flex-direction:column;gap:22px}
+.msg{max-width:78%;padding:16px 24px 18px;border-radius:26px;font-size:34px;font-weight:600;line-height:1.35;opacity:0}
+.me{align-self:flex-start;background:#005c4b;border-top-left-radius:6px}
+.them{align-self:flex-end;background:#202c33;border-top-right-radius:6px}
+.rx{width:330px;height:220px;border-radius:16px;background:#f2f2ee;color:#222;padding:18px 22px;font-size:22px;line-height:1.5;margin-bottom:10px;font-weight:600;text-align:right}
+.rx i{display:block;height:10px;background:#c9ccd2;border-radius:5px;margin:12px 0}
+.tm{font-size:20px;opacity:.6;margin-top:4px;text-align:left}
+#typing{align-self:flex-end;background:#202c33;padding:20px 28px;border-radius:26px;display:flex;gap:10px;opacity:0}
+#typing span{width:16px;height:16px;border-radius:50%;background:#9aa4aa}
+#phone .ft{position:absolute;bottom:0;left:0;right:0;height:110px;background:#1f2c33;display:flex;align-items:center;padding:0 24px;gap:18px}
+#phone .in{flex:1;height:70px;border-radius:40px;background:#2a3942;font-size:30px;color:#cfd6da;display:flex;align-items:center;padding:0 30px;font-weight:600}
+/* end */
+#logoBig{overflow:hidden;position:absolute;left:50%;top:430px;width:420px;height:420px;margin-left:-210px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(227,30,36,.6),0 30px 100px rgba(0,0,0,.7)}
+#logoBig img{width:390px;height:390px}
+.sig{font-family:'Aref Ruqaa',serif;font-size:110px;line-height:1.1}
+.wa{direction:ltr;display:inline-flex;align-items:center;gap:20px;font-weight:800;font-size:66px;background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.22);padding:10px 40px 16px;border-radius:80px}
+.wa svg{width:64px;height:64px}
+.addr{font-size:34px;font-weight:600;opacity:.78;line-height:1.5}
+</style></head><body><div id="stage">
+
+<!-- S1 clock -->
+<div class="scene" id="s1">
+ <div class="shade" style="background:radial-gradient(circle at 50% 45%,#16181c 0%,#07080a 70%)"></div>
+ <div class="txt" id="s1k" style="top:620px"><div class="k">الساعة دلوقتي…</div></div>
+ <div class="txt" id="s1c" style="top:760px"><div id="clock"><span class="c" id="hh">02</span><span class="c" id="col">:</span><span class="c" id="mm">59</span></div><div class="k" style="font-size:44px;opacity:.6;margin-top:-10px">AM</div></div>
+</div>
+
+<!-- S2 bedroom -->
+<div class="scene" id="s2">
+ <div class="bg" id="s2bg" style="background-image:url(bg-bedroom.png)"></div>
+ <div class="shade" style="background:linear-gradient(180deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,0) 65%,rgba(0,0,0,.7) 100%)"></div>
+ <div class="txt" id="s2a" style="top:250px"><div class="b" style="font-size:112px">الحرارة</div></div>
+ <div class="txt" id="s2b" style="top:390px"><div class="b" style="font-size:112px">مش راضية <span class="r">تنزل</span></div></div>
+ <div class="txt" id="s2t" style="top:1380px"><div style="display:inline-block;direction:ltr;font-family:Orbitron;font-weight:900;font-size:120px;background:rgba(0,0,0,.55);border:3px solid rgba(255,42,47,.8);border-radius:30px;padding:10px 46px;color:#ff4a4f">🌡 <span id="temp">37.0</span>°</div></div>
+</div>
+
+<!-- S3 street -->
+<div class="scene" id="s3">
+ <div class="bg" id="s3bg" style="background-image:url(bg-street.png)"></div>
+ <div class="shade" style="background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.2) 50%,rgba(0,0,0,.7))"></div>
+ <div class="bar" id="bar1" style="top:-640px"></div>
+ <div class="txt" id="s3a" style="top:760px"><div class="b" style="font-size:118px">وكل الصيدليات</div></div>
+ <div class="txt" id="s3b" style="top:910px"><div class="b r" style="font-size:150px">قفلت…</div></div>
+</div>
+
+<!-- S4 reveal -->
+<div class="scene" id="s4">
+ <div class="bg" id="s4bg" style="background-image:url(bg-24h-dark.png);background-position:42% center"></div>
+ <div class="shade" style="background:linear-gradient(180deg,rgba(5,6,8,.88) 0%,rgba(5,6,8,.35) 34%,rgba(0,0,0,0) 55%,rgba(5,6,8,.75) 100%)"></div>
+ <div class="txt" id="s4k" style="top:250px"><div class="k">متقلقش…</div></div>
+ <div class="txt" id="s4a" style="top:330px"><div class="b" style="font-size:160px">إحنا <span class="r">صاحيين</span></div></div>
+ <div class="txt" id="s4p" style="top:1500px"><div class="pill">مفتوحين <span id="cnt" style="font-family:Orbitron;font-weight:900">24</span> ساعة</div></div>
+</div>
+
+<!-- S5 whatsapp -->
+<div class="scene" id="s5">
+ <div class="shade" style="background:radial-gradient(circle at 50% 40%,#1a1d22 0%,#07080a 75%)"></div>
+ <div class="txt" id="s5k" style="top:120px"><div class="b" style="font-size:84px">ابعت الروشتة <span class="r">واتساب</span></div></div>
+ <div id="phone">
+  <div class="hd"><div class="av"></div><div><div class="nm">صيدلية د/ أحمد شكري</div><div class="st" id="st">متصل الآن</div></div></div>
+  <div id="chat">
+   <div class="msg me" id="m1"><div class="rx">روشتة<i></i><i style="width:70%"></i><i style="width:85%"></i><i style="width:55%"></i></div>ممكن الدوا ده؟ 🙏<div class="tm">3:04</div></div>
+   <div id="typing"><span></span><span></span><span></span></div>
+   <div class="msg them" id="m2">موجود ✅<br>والمندوب في الطريق ليك 🛵<div class="tm">3:05</div></div>
+  </div>
+  <div class="ft"><div class="in" id="inp"></div></div>
+ </div>
+</div>
+
+<!-- S6 delivery -->
+<div class="scene" id="s6">
+ <div class="bg" id="s6bg" style="background-image:url(bg-delivery-dark.png);background-position:62% center"></div>
+ <div class="shade" style="background:linear-gradient(180deg,rgba(5,6,8,.85) 0%,rgba(5,6,8,.3) 30%,rgba(0,0,0,0) 50%,rgba(5,6,8,.7) 100%)"></div>
+ <div class="txt" id="s6k" style="top:240px"><div class="k">دواك يوصلك</div></div>
+ <div class="txt" id="s6a" style="top:320px"><div class="b" style="font-size:150px">لحد باب <span class="r">بيتك</span></div></div>
+</div>
+
+<!-- S7 end -->
+<div class="scene" id="s7">
+ <div class="shade" style="background:radial-gradient(circle at 50% 35%,#1d1f24 0%,#07080a 70%)"></div>
+ <div id="logoBig"><img src="logo.jpg"></div>
+ <div class="txt" id="s7s" style="top:930px"><div class="sig">صاحيين <span class="r">علشانك</span></div></div>
+ <div class="txt" id="s7p" style="top:1100px"><div class="pill" style="font-size:46px">مفتوحين 24 ساعة • توصيل للبيت</div></div>
+ <div class="txt" id="s7w" style="top:1240px"><div class="wa"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M16 6.5a9.4 9.4 0 0 0-8.1 14.2L6.6 25.5l4.9-1.3A9.4 9.4 0 1 0 16 6.5zm5.5 13.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>01211441156</div></div>
+ <div class="txt" id="s7a" style="top:1400px"><div class="addr">فرع البدرشين — طريق مصر أسيوط السريع<br>أسفل عيادات أرقى، بجوار البنك الأهلي المصري</div></div>
+</div>
+
+<div id="vig"></div><div id="grain"></div><div id="flash"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eb=x=>{const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+// scene windows [in, out]
+const S={s1:[0,3.5],s2:[3.5,7.4],s3:[7.4,10.5],s4:[10.5,15.2],s5:[15.2,20.6],s6:[20.6,25],s7:[25,30.1]};
+const HITS=[3.5,7.4,10.5,15.2,20.6,25,1.25];
+const FLASH=[10.5,20.6,25];
+function pop(id,t,a,dur=.45,from='scale'){const e=$(id),x=p(t,a,a+dur);
+ const s=from==='up'?`translateY(${(1-eo(x))*90}px)`:`scale(${.55+.45*eb(x)})`;
+ e.style.opacity=cl(x*2.2);e.style.transform=s;e.style.filter=`blur(${(1-eo(x))*14}px)`;}
+function out(id,t,a,dur=.25){const e=$(id),x=p(t,a,a+dur);if(x>0){e.style.opacity=Math.min(+e.style.opacity||1,1-x);}}
+window.render=function(t){
+ for(const k in S){const [a,b]=S[k];const e=$(k);e.style.opacity=(t>=a&&t<b)?1:0;}
+ // camera punch / shake on hits
+ let sx=0,sy=0,ps=1;
+ for(const h of HITS){const d=t-h;if(d>=0&&d<.3){const f=1-d/.3;sx+=Math.sin(d*90)*14*f;sy+=Math.cos(d*77)*10*f;ps+=.06*f*f;}}
+ $('stage').style.transform=`translate(${sx}px,${sy}px) scale(${ps})`;
+ let fl=0;for(const h of FLASH){const d=t-h;if(d>=0&&d<.22)fl=Math.max(fl,.85*(1-d/.22));}
+ $('flash').style.opacity=fl;
+ // S1
+ if(t<3.6){pop('s1k',t,.15,.5,'up');pop('s1c',t,.35,.55);
+  const flip=t>=1.25;$('hh').textContent=flip?'03':'02';$('mm').textContent=flip?'00':'59';
+  const d=t-1.25;$('s1c').querySelector('#clock').style.color=flip?'#ff2a2f':'#fff';
+  $('clock').style.textShadow=flip?'0 0 50px rgba(255,30,40,.6)':'none';
+  if(d>=0&&d<.35){$('clock').style.transform=`scale(${1+.18*(1-d/.35)})`}else $('clock').style.transform='';
+  $('col').style.opacity=(Math.floor(t*2)%2)?.25:1;}
+ // S2
+ if(t>=3.4&&t<7.5){const x=p(t,3.5,7.4);$('s2bg').style.transform=`scale(${1.04+.12*x})`;
+  pop('s2a',t,3.7,.4);pop('s2b',t,4.05,.45);pop('s2t',t,4.6,.4,'up');
+  $('temp').textContent=(37+2.8*eo(p(t,4.7,6.4))).toFixed(1);}
+ // S3
+ if(t>=7.3&&t<10.6){const x=p(t,7.4,10.5);$('s3bg').style.transform=`scale(${1.16-.1*x}) translateY(${x*-20}px)`;
+  const bx=p(t,7.6,7.95);$('bar1').style.top=(-640+640*eb(bx)*.95)+'px';$('bar1').style.opacity=1-p(t,8.3,8.7);
+  pop('s3a',t,8.0,.4);pop('s3b',t,8.45,.45);
+  // drift darker toward reveal
+  $('s3').style.filter=`brightness(${1-.55*p(t,9.4,10.45)})`;}
+ // S4
+ if(t>=10.4&&t<15.3){const x=p(t,10.5,15.2);$('s4bg').style.transform=`scale(${1.28-.2*eo(x)})`;
+  pop('s4k',t,10.75,.4,'up');pop('s4a',t,11.0,.5);pop('s4p',t,12.5,.45,'up');
+  $('cnt').textContent=String(Math.round(24*eo(p(t,12.55,13.6)))).padStart(2,'0');}
+ // S5
+ if(t>=15.1&&t<20.7){pop('s5k',t,15.35,.45);const ph=$('phone'),x=p(t,15.2,15.9);
+  ph.style.transform=`translateY(${(1-eo(x))*700}px) rotate(${(1-eo(x))*-6}deg)`;
+  const msg='ممكن الدوا ده؟ 🙏';const ty=p(t,16.0,17.1);const n=Math.round([...msg].length*ty);
+  $('inp').textContent=t<17.25?[...msg].slice(0,n).join('')+(t>15.9&&t<17.25&&Math.floor(t*4)%2?'|':''):'';
+  const m1=p(t,17.3,17.6);$('m1').style.opacity=m1;$('m1').style.transform=`translateY(${(1-eo(m1))*40}px) scale(${.9+.1*eb(m1)})`;
+  const tv=t>=17.9&&t<19.0;$('typing').style.opacity=tv?1:0;$('typing').style.display=t<19.0?'flex':'none';
+  [...$('typing').children].forEach((s,i)=>s.style.transform=`translateY(${Math.sin(t*12+i)*6}px)`);
+  $('st').textContent=tv?'يكتب الآن…':'متصل الآن';
+  const m2=p(t,19.0,19.3);$('m2').style.opacity=m2;$('m2').style.transform=`translateY(${(1-eo(m2))*40}px) scale(${.9+.1*eb(m2)})`;}
+ // S6
+ if(t>=20.5&&t<25.1){const x=p(t,20.6,25);$('s6bg').style.transform=`scale(${1.06+.1*x}) translateX(${-30*x}px)`;
+  pop('s6k',t,20.85,.4,'up');pop('s6a',t,21.1,.5);}
+ // S7
+ if(t>=24.9){const lx=p(t,25.15,25.75);$('logoBig').style.transform=`scale(${eb(lx)}) rotate(${(1-eo(lx))*-20}deg)`;$('logoBig').style.opacity=cl(lx*2);
+  pop('s7s',t,25.9,.5);pop('s7p',t,26.5,.4,'up');pop('s7w',t,27.0,.45);pop('s7a',t,27.5,.45,'up');
+  const fo=p(t,29.55,30);$('stage').style.filter=`brightness(${1-fo})`;} else $('stage').style.filter='';
+};
+window.render(0);
+</script></body></html>
