@@ -1,0 +1,93 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Aref+Ruqaa:wght@700&family=Orbitron:wght@600;800&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:Cairo,sans-serif;color:#fff}
+.shot{position:absolute;inset:0;opacity:0;overflow:hidden}
+.img{position:absolute;inset:-3%;background-size:cover;background-position:center;will-change:transform,filter}
+#glow{position:absolute;left:47%;top:61.5%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;background:radial-gradient(circle,rgba(255,240,225,.55) 0%,rgba(255,60,60,.18) 35%,rgba(0,0,0,0) 70%);mix-blend-mode:screen}
+.rain{position:absolute;inset:-200px;opacity:.35;background-image:repeating-linear-gradient(100deg,rgba(255,255,255,0) 0 18px,rgba(220,230,255,.5) 18px 19px,rgba(255,255,255,0) 19px 46px),repeating-linear-gradient(104deg,rgba(255,255,255,0) 0 31px,rgba(220,230,255,.35) 31px 32px,rgba(255,255,255,0) 32px 70px);mix-blend-mode:screen}
+.stamp{position:absolute;top:210px;right:70px;direction:ltr;display:flex;align-items:center;gap:16px;font-family:Orbitron;font-weight:800;font-size:54px;letter-spacing:3px;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.8);opacity:0}
+.stamp i{width:18px;height:18px;border-radius:50%;background:#ff2a2f;box-shadow:0 0 14px #ff2a2f}
+.stamp small{font-size:30px;opacity:.75}
+#cap{position:absolute;left:70px;right:70px;top:1420px;text-align:center;font-weight:700;font-size:56px;line-height:1.45;text-shadow:0 3px 18px rgba(0,0,0,.95),0 0 4px rgba(0,0,0,.9)}
+#cap b{color:#ff3a3f}
+#lb{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 62%,rgba(0,0,0,.7) 100%)}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 50%,rgba(0,0,0,.6) 100%)}
+#grain{position:absolute;inset:-50px;opacity:.09;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E")}
+#black{position:absolute;inset:0;background:#000;opacity:1;pointer-events:none}
+#white{position:absolute;inset:0;background:#fff8f0;opacity:0;pointer-events:none}
+/* end */
+#end{position:absolute;inset:0;opacity:0}
+#logo{position:absolute;left:50%;top:250px;width:300px;height:300px;margin-left:-150px;border-radius:50%;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(227,30,36,.55),0 24px 80px rgba(0,0,0,.6);opacity:0}
+#logo img{width:280px;height:280px}
+.e{position:absolute;left:60px;right:60px;text-align:center;opacity:0}
+.sig{font-family:'Aref Ruqaa',serif;font-size:104px;line-height:1.1;text-shadow:0 6px 30px rgba(0,0,0,.6)}
+.r{color:#ff2a2f}
+.pill{display:inline-block;background:#e31e24;font-weight:800;font-size:42px;padding:6px 34px 12px;border-radius:18px;box-shadow:0 8px 30px rgba(227,30,36,.4)}
+.wa{direction:ltr;display:inline-flex;align-items:center;gap:18px;font-weight:800;font-size:58px;background:rgba(0,0,0,.35);border:2px solid rgba(255,255,255,.3);padding:8px 36px 14px;border-radius:70px;backdrop-filter:blur(6px)}
+.wa svg{width:56px;height:56px}
+.addr{font-size:32px;font-weight:600;opacity:.85;line-height:1.5;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+</style></head><body>
+<div class="shot" id="h1"><div class="img" id="i1" style="background-image:url(shot1.png)"></div><div id="glow"></div></div>
+<div class="shot" id="h2"><div class="img" id="i2" style="background-image:url(shot2.png)"></div><div class="stamp" id="t2"><i></i>01:10<small>AM</small></div></div>
+<div class="shot" id="h3"><div class="img" id="i3" style="background-image:url(shot3.png)"></div><div class="rain" id="r3"></div><div class="stamp" id="t3"><i></i>02:40<small>AM</small></div></div>
+<div class="shot" id="h4"><div class="img" id="i4" style="background-image:url(shot4.png)"></div><div class="rain" id="r4"></div><div class="stamp" id="t4"><i></i>03:17<small>AM</small></div></div>
+<div class="shot" id="h5"><div class="img" id="i5" style="background-image:url(shot5.png)"></div></div>
+<div class="shot" id="h6"><div class="img" id="i6" style="background-image:url(shot6.png)"></div></div>
+<div class="shot" id="h7"><div class="img" id="i7" style="background-image:url(shot7.png)"></div>
+ <div id="end">
+  <div id="logo"><img src="logo.jpg"></div>
+  <div class="e" id="e1" style="top:600px"><div class="sig">صاحيين <span class="r">علشانك</span></div></div>
+  <div class="e" id="e2" style="top:760px"><div class="pill">فاتحين 24 ساعة • توصيل للبيت</div></div>
+  <div class="e" id="e3" style="top:1540px"><div class="wa"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M16 6.5a9.4 9.4 0 0 0-8.1 14.2L6.6 25.5l4.9-1.3A9.4 9.4 0 1 0 16 6.5zm5.5 13.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>01211441156</div></div>
+  <div class="e" id="e4" style="top:1680px"><div class="addr">فرع البدرشين — طريق مصر أسيوط السريع<br>أسفل عيادات أرقى، بجوار البنك الأهلي المصري</div></div>
+ </div>
+</div>
+<div id="lb"></div><div id="cap"></div><div id="vig"></div><div id="grain"></div><div id="white"></div><div id="black"></div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>cl((t-a)/(b-a));
+const ss=x=>x*x*(3-2*x);
+const eo=x=>1-Math.pow(1-x,3);
+const SH=[[0,4.6],[4.6,8.6],[8.6,12.2],[12.2,16.0],[16.0,20.4],[20.4,24.8],[24.8,30.2]];
+const CAPS=[[0.6,4.1,'كل ليلة، البدرشين بتطفي نورها.'],[5.0,8.3,'بس فيه وجع… مبيعرفش ينام.'],[8.9,12.0,'وفيه طريق… مبيخلصش.'],[12.6,15.6,'ولما كل حاجة تقفل،'],[16.4,20.0,'فيه نور واحد… <b>مبيطفيش.</b>'],[20.7,24.6,'ولو مقدرتش تيجيله…<br>هو ييجي لحد عندك.']];
+const KB=[[1.18,1.0,0,0],[1.0,1.09,0,-20],[1.04,1.12,15,0],[1.0,1.1,0,25],[1.1,1.0,0,0],[1.02,1.1,-20,0],[1.12,1.0,0,30]];
+window.render=function(t){
+ SH.forEach(([a,b],i)=>{const e=$('h'+(i+1));const on=t>=a-0.6&&t<b+0.6;
+  let o=0;if(on){o=1;}
+  // crossfade 5->6 and 6->7 ; others via black dips
+  if(i===5)o=t<a?p(t,a-0.6,a):(t>=b?1-p(t,b,b+0.6):1);
+  if(i===6)o=t<a?p(t,a-0.6,a):1;
+  if(i===4)o=t<a?0:1;
+  if(i<4)o=(t>=a&&t<b)?1:0;
+  e.style.opacity=o;
+  const [s0,s1,dx,dy]=KB[i];const x=ss(p(t,a,b+0.6));
+  $('i'+(i+1)).style.transform=`scale(${s0+(s1-s0)*x}) translate(${dx*x}px,${dy*x}px)`;});
+ // shot1 lights switching off in steps
+ const steps=Math.floor(p(t,1.0,3.6)*6)/6;$('i1').style.filter=`brightness(${1.9-1.05*steps}) saturate(${1-.2*steps})`;
+ $('glow').style.opacity=.55+.45*steps+Math.sin(t*9)*.04;
+ // dips to black between shots 1-4 and at start
+ let bk=1-p(t,0,0.9);
+ for(const c of [4.6,8.6,12.2]){const d=Math.abs(t-c);if(d<.3)bk=Math.max(bk,1-d/.3);}
+ bk=Math.max(bk,p(t,15.55,15.95)*(t<16?1:0));
+ bk=Math.max(bk,p(t,29.3,30));
+ $('black').style.opacity=bk;
+ // soft white bloom at reveal
+ $('white').style.opacity=t>=16&&t<16.7?.75*(1-p(t,16,16.7)):0;
+ // rain motion
+ for(const r of ['r3','r4']){$(r).style.transform=`translate(${-(t*140)%46}px,${(t*1600)%460}px)`;}
+ // timestamps
+ [[2,4.8],[3,8.8],[4,12.4]].forEach(([n,a])=>{const e=$('t'+n);const x=p(t,a,a+.5);e.style.opacity=x;e.style.transform=`translateY(${(1-eo(x))*20}px)`;e.firstChild.style.opacity=Math.floor(t*2)%2?.3:1;});
+ // captions
+ let c='',co=0;for(const [a,b,s] of CAPS){if(t>=a-.05&&t<b+.25){c=s;co=Math.min(p(t,a-.05,a+.25),1-p(t,b,b+.25));}}
+ $('cap').innerHTML=c;$('cap').style.opacity=co;
+ // end card
+ $('end').style.opacity=t>=25.2?1:0;
+ const lx=p(t,25.5,26.3);$('logo').style.opacity=lx;$('logo').style.transform=`scale(${.85+.15*eo(lx)})`;
+ [['e1',26.2],['e2',26.9],['e3',27.4],['e4',27.9]].forEach(([id,a])=>{const x=p(t,a,a+.6);const e=$(id);e.style.opacity=x;e.style.transform=`translateY(${(1-eo(x))*30}px)`;e.style.filter=`blur(${(1-x)*8}px)`;});
+ $('grain').style.transform=`translate(${(Math.floor(t*24)*37)%50}px,${(Math.floor(t*24)*53)%50}px)`;
+};
+render(0);
+</script></body></html>
